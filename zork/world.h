@@ -13,6 +13,7 @@ class World
 {
 public:
     World();
+    ~World();
 
 private:
     Player *player;
