@@ -8,10 +8,11 @@ private:
     int actualRoom;
 
 public:
-    Player(int roomId) : actualRoom(roomId) {};
-    bool hasKey = false;
-    bool isTied = true;
-    int getActualRoom();
-    void changeHasKey(bool value);
-    void changeActualRoom(int id);
+    Player(const char *name, const char *description, Room *room);
+    ~Player();
+
+    bool hasKey;
+    bool isTied;
+
+public:
 };
