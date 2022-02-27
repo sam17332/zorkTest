@@ -9,7 +9,7 @@ using namespace std;
 class Room : public Entity
 {
 public:
-    Room(const int id, const char *name, const char *description);
+    Room(const char *name, const char *description);
     ~Room();
 
 public:
