@@ -1,3 +1,6 @@
+#ifndef _Item
+#define _Item
+
 #include <iostream>
 #include <string>
 #include "entity.h"
@@ -15,11 +18,14 @@ enum ItemType
 class Item : public Entity
 {
 public:
-    Item(const char *name, const char *description, Entity *parent, ItemType item_type);
+    Item(const char *name, const char *description, Entity *parent, ItemType itemType);
+    ~Item();
 
 public:
-    ItemType type;
+    ItemType itemType;
     std::string name;
     std::string description;
     Entity *parent;
 };
+
+#endif //_Item
