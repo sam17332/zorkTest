@@ -8,9 +8,11 @@ using namespace std;
 
 enum EntityType
 {
+	ENTITY,
 	PLAYER,
 	ROOM,
 	ITEM,
+	DOOR,
 	EXIT,
 	CREATURE,
 };
