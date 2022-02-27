@@ -1,12 +1,19 @@
-#include <iostream>
+#ifndef __Room__
+#define __Room__
+
 #include <string>
+#include "entity.h"
+
 using namespace std;
 
-class Room
+class Room : public Entity
 {
 public:
-    int id;
-    string name;
-    string description;
+    Room(const int id, const char *name, const char *description);
+    ~Room();
+
+public:
     bool visited;
 };
+
+#endif //__Room__
