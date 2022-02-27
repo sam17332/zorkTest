@@ -15,6 +15,7 @@ enum EntityType
 	DOOR,
 	EXIT,
 	CREATURE,
+	MACHINE
 };
 
 class Entity
