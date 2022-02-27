@@ -57,9 +57,9 @@ bool World::ValidateInput(string input)
 
         if (player->isTied)
         {
-            if (input === "untie")
+            if (input == "untie")
             {
-                player->Untie(;
+                player->Untie();
             }
             else
             {
