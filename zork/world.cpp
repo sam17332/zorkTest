@@ -66,13 +66,10 @@ bool World::ValidateInput(string input)
                 cout << "You are still tied."
                      << "\n";
             }
-
         }
-        else
-        {
-        }
+        // else
+        // {
+        // }
     }
-}
-
-return valid;
+    return valid;
 }
