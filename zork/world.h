@@ -17,6 +17,7 @@ class World
 public:
     World();
     ~World();
+    bool ValidateInput(string input);
 
 private:
     Player *player;
