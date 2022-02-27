@@ -1,8 +1,11 @@
-#include <iostream>
-#include <string>
+#ifndef _Player
+#define _Player
+
+#include "creature.h"
+
 using namespace std;
 
-class Player
+class Player : public Creature
 {
 private:
     int actualRoom;
@@ -16,3 +19,5 @@ public:
 
 public:
 };
+
+#endif //_Player

@@ -1,9 +1,7 @@
-#ifndef __Player__
-#define __Player__
-
 #include <iostream>
 #include "player.h"
 #include "creature.h"
+#include "room.h"
 
 Player::Player(const char *title, const char *description, Room *room) : Creature(title, description, room)
 {
@@ -13,5 +11,3 @@ Player::Player(const char *title, const char *description, Room *room) : Creatur
 Player::~Player()
 {
 }
-
-#endif //__Player__
