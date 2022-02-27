@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "player.h"
+#include "world.h"
 
 using namespace std;
 
@@ -12,64 +12,33 @@ using namespace std;
 void initialText()
 {
 	cout << "\n";
-	cout << "\n";
-	cout << "Welcome to Zork!"
-		 << "\n";
-	cout << "It seems that you have been kidnapped and you are just waking up."
+	cout << "Welcome to Lab Zork!"
 		 << "\n";
 	cout << "\n";
 	cout << "\n";
-}
-
-/*
- *   Depending on the room the player is, are the words that the game understands.
- */
-bool validateInput(string input, int roomId)
-{
-	bool valid = true;
-	cout << input << "\n";
-
-	if (roomId == 1)
-	{
-		std::vector<string> options{"untie", "take lamp", "drop lamp", "go garden"};
-		std::vector<string>::iterator iterator;
-
-		iterator = std::find(options.begin(), options.end(), input);
-
-		if (iterator == options.end())
-		{
-			valid = false;
-			cout << "Thats something I dont understand."
-				 << "\n"
-				 << "\n";
-		}
-	}
-
-	return valid;
+	cout << "You are just waking up!"
+		 << "\n";
+	cout << "You have been kidnapped."
+		 << "\n";
+	cout << "You are looking around and it seems you are inside a laboratory."
+		 << "\n";
+	cout << "What they were doing to you and wheres the people? Why is there no one here?."
+		 << "\n";
+	cout << "\n";
 }
 
 int main()
 {
 	initialText();
 
-	Player player(1);
-	string input;
-	int roomId;
+	World world;
 
-	// printf("room id %d\n", roomId);
+	string input;
 
 	bool exit = true;
 	while (exit)
 	{
 		std::getline(std::cin, input);
-		roomId = player.getActualRoom();
-
-		if (!validateInput(input, roomId))
-		{
-			continue;
-		}
-
-		cout << "Continua";
 	}
 
 	return 0;
