@@ -1,3 +1,6 @@
+#ifndef _World
+#define _World
+
 #include <string>
 #include <list>
 #include <time.h>
@@ -19,3 +22,5 @@ private:
     Player *player;
     list<Entity *> entities;
 };
+
+#endif //_World

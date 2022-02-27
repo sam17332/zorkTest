@@ -1,5 +1,5 @@
-#ifndef __Room__
-#define __Room__
+#ifndef _Room
+#define _Room
 
 #include <string>
 #include "entity.h"
@@ -16,4 +16,4 @@ public:
     bool visited;
 };
 
-#endif //__Room__
+#endif //_Room

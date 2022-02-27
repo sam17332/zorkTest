@@ -1,5 +1,5 @@
-#ifndef __Entity__
-#define __Entity__
+#ifndef _Entity
+#define _Entity
 
 #include <string>
 #include <list>
@@ -32,4 +32,4 @@ public:
 	list<Entity *> container;
 };
 
-#endif //__Entity__
+#endif //_Entity

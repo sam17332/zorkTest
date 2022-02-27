@@ -1,5 +1,5 @@
-#ifndef __Creature__
-#define __Creature__
+#ifndef _Creature
+#define _Creature
 
 #include <string>
 #include "entity.h"
@@ -18,4 +18,4 @@ public:
 public:
 };
 
-#endif //__Creature__
+#endif //_Creature
