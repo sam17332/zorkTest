@@ -3,6 +3,7 @@
 #include "item.h"
 #include "door.h"
 #include "player.h"
+#include "machine.h"
 
 World::World()
 {
@@ -27,6 +28,7 @@ World::World()
     Door *secretExperiments = new Door("doo2", "This door is between the experimients room and the secrete room", experiments, secret, keyCard, true);
 
     // Create machine
+    Machine *machine = new Machine("machine", "I could send you to another dimension.", secret, battery, false);
 
     // Create player
     Player *player = new Player("Subject 34", "Subject shows big compatibilities with our travel test", mainLab);
