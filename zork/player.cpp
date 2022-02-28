@@ -42,6 +42,7 @@ void Player::TakeItem(Item *itemParam, string roomName)
 {
 	string parentName = itemParam->parent->name;
 	string itemName = itemParam->name;
+
 	if (roomName != parentName)
 	{
 		cout << "The item " << itemParam->name << " you are trying to take is not in this room."
@@ -49,6 +50,7 @@ void Player::TakeItem(Item *itemParam, string roomName)
 	}
 	else
 	{
+		itemParam->ChangeParent(this);
 		items.push_back(itemParam);
 		Item *item = items[items.size()];
 		cout << itemName << " taken"
