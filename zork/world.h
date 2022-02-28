@@ -2,14 +2,14 @@
 #define _World
 
 #include <string>
-#include <list>
-#include <time.h>
-
-#define TICK_FREQUENCY 0.5f
+#include <vector>
 
 using namespace std;
 
-class Entity;
+class Room;
+class Item;
+class Door;
+class Machine;
 class Player;
 
 class World
@@ -21,7 +21,10 @@ public:
 
 private:
     Player *player;
-    list<Entity *> entities;
+    vector<Room *> rooms;
+    vector<Item *> items;
+    vector<Door *> doors;
+    vector<Machine *> machines;
 };
 
 #endif //_World
