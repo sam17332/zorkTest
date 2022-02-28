@@ -10,7 +10,9 @@ Item::~Item()
 {
 }
 
-void Item::ChangeParent(Entity *newParent)
+Item* Item::ChangeParent(Entity *newParent)
 {
     parent = newParent;
+
+    return this;
 }
