@@ -20,6 +20,7 @@ public:
 
     string GetRoomsName();
     void Untie();
+    void ShowRoom();
     void ChangeRoom(Room *room);
     void TakeItem(Item *item, string roomName);
     void DropItem(Item *item, Room *room);
