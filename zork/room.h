@@ -12,6 +12,8 @@ public:
     Room(const char *name, const char *description);
     ~Room();
 
+    void Visit();
+
 public:
     bool visited;
 };

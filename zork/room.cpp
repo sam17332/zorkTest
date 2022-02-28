@@ -10,3 +10,14 @@ Room::Room(const char *title, const char *description) : Entity(title, descripti
 Room::~Room()
 {
 }
+
+void Room::Visit()
+{
+	cout << name << "\n";
+
+	if (!visited)
+	{
+		cout << description << "\n";
+		visited = true;
+	}
+}
