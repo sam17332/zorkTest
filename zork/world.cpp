@@ -352,7 +352,7 @@ bool World::ValidateInput(string input)
             {
                 if (machine->charged)
                 {
-                    player->UseMachine(machine, player->inPresent);
+                    player->UseMachine();
 
                     return true;
                 }
@@ -392,7 +392,7 @@ bool World::ValidateInput(string input)
             }
             else if (input == "use pickaxe")
             {
-                if (player->hasPickaxe && player->returned)
+                if (player->hasPickaxe && player->returned && player->inPresent)
                 {
                     player->ChangeRoom(rooms[6]);
 
@@ -422,6 +422,14 @@ bool World::ValidateInput(string input)
 
                 return true;
             }
+            else if(input == "use machine")
+            {
+                player->UseMachine();
+            }
+            else
+            {
+                return false;
+            }
         }
         else if (actualRoomName == "experiments")
         {
@@ -437,6 +445,10 @@ bool World::ValidateInput(string input)
 
                 return true;
             }
+            else
+            {
+                return false;
+            }
         }
         else if (actualRoomName == "Computing")
         {
@@ -451,6 +463,10 @@ bool World::ValidateInput(string input)
                 player->ChangeRoom(rooms[3]);
 
                 return true;
+            }
+            else
+            {
+                return false;
             }
         }
         else if (actualRoomName == "Lab")
@@ -469,10 +485,14 @@ bool World::ValidateInput(string input)
             }
             else if (input == "go storage")
             {
-                rooms[5]->VisitStorageOtherDimension();
                 player->ChangeRoom(rooms[5]);
+                rooms[5]->VisitStorageOtherDimension();
 
                 return true;
+            }
+            else
+            {
+                return false;
             }
         }
         else if (actualRoomName == "MainLab")
@@ -483,6 +503,10 @@ bool World::ValidateInput(string input)
 
                 return true;
             }
+            else
+            {
+                return false;
+            }
         }
         else if (actualRoomName == "Storage")
         {
@@ -491,6 +515,10 @@ bool World::ValidateInput(string input)
                 player->ChangeRoom(rooms[1]);
 
                 return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
