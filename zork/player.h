@@ -28,6 +28,9 @@ public:
 public:
     bool hasKey;
     bool hasKeyCard;
+    bool hasKnife;
+    bool hasbattery;
+    bool hasPickaxe;
     bool isTied;
     bool inPresent;
     Room *room;
