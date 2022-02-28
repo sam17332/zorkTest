@@ -10,6 +10,7 @@ using namespace std;
 enum ItemType
 {
     KEY,
+    KEYCARD,
     BATTERY,
     TOOL,
     WEAPON
