@@ -77,6 +77,18 @@ bool World::ValidateInput(string input)
         {
             // Since the take/drop actions can be used in any room,
             // we need the conditions for them outside of the conditions for each room.
+            if (input == "take key")
+            {
+                player->TakeItem(items[0], actualRoomName);
+                player->hasKey = true;
+                return true;
+            }
+            else if (input == "drop key")
+            {
+                player->hasKey = true;
+                player->DropItem(items[0], actualRoom);
+                return true;
+            }
             if (input == "take key card")
             {
                 player->TakeItem(items[1], actualRoomName);
@@ -92,14 +104,40 @@ bool World::ValidateInput(string input)
 
             if (input == "take knife")
             {
-                player->TakeItem(items[1], actualRoomName);
+                player->TakeItem(items[2], actualRoomName);
                 player->hasKnife = true;
                 return true;
             }
             else if (input == "drop knife")
             {
                 player->hasKnife = true;
-                player->DropItem(items[1], actualRoom);
+                player->DropItem(items[2], actualRoom);
+                return true;
+            }
+
+            if (input == "take battery")
+            {
+                player->TakeItem(items[3], actualRoomName);
+                player->hasBattery = true;
+                return true;
+            }
+            else if (input == "drop battery")
+            {
+                player->hasBattery = true;
+                player->DropItem(items[3], actualRoom);
+                return true;
+            }
+
+            if (input == "take pickaxe")
+            {
+                player->TakeItem(items[3], actualRoomName);
+                player->haspickaxe = true;
+                return true;
+            }
+            else if (input == "drop pickaxe")
+            {
+                player->haspickaxe = true;
+                player->DropItem(items[3], actualRoom);
                 return true;
             }
         }
