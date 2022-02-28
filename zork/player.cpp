@@ -128,7 +128,6 @@ void Player::ShowRoom()
 void Player::UseItem(ItemType type)
 {
 	Item *item = SearchItem(type, true);
-	cout << "A borrar: " << item->name << "\n";
 	delete item;
 
 	if (type == 0) // Key
