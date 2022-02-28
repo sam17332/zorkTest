@@ -42,6 +42,11 @@ int main()
  				 << "\n";
 		}
 
+		if (world.finished)
+		{
+			exit = false;
+		}
+
 		cout << "\n";
 	}
 
