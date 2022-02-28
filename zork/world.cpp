@@ -17,13 +17,13 @@ World::World()
     Room *storage = new Room("Storage", "There's a pickaxe battery in here.");
     Room *street = new Room("Street", "Finally!! you are outside!");
 
-    rooms.push_back(mainLab);
-    rooms.push_back(lab);
-    rooms.push_back(computing);
-    rooms.push_back(experiments);
-    rooms.push_back(secret);
-    rooms.push_back(storage);
-    rooms.push_back(street);
+    rooms.push_back(mainLab); // 0
+    rooms.push_back(lab); // 1
+    rooms.push_back(computing); // 2
+    rooms.push_back(experiments); // 3
+    rooms.push_back(secret); // 4
+    rooms.push_back(storage); // 5
+    rooms.push_back(street); // 6
 
     // Create items
     Item *key = new Item("Key", "Storage key", computing, KEY);
@@ -32,23 +32,23 @@ World::World()
     Item *battery = new Item("Battery", "Charged battery", storage, BATTERY);
     Item *pickaxe = new Item("Pickaxe", "Big pickaxe", experiments, BATTERY);
 
-    items.push_back(key);
-    items.push_back(keyCard);
-    items.push_back(knife);
-    items.push_back(battery);
-    items.push_back(pickaxe);
+    items.push_back(key); // 0
+    items.push_back(keyCard); // 1
+    items.push_back(knife); // 2
+    items.push_back(battery); // 3
+    items.push_back(pickaxe); // 4
 
     // Create doors
     Door *labStorage = new Door("Door1", "This door is between the lab room and the storage room", lab, storage, key, true);
     Door *secretExperiments = new Door("Doo2", "This door is between the experimients room and the secrete room", experiments, secret, keyCard, true);
 
-    doors.push_back(labStorage);
-    doors.push_back(secretExperiments);
+    doors.push_back(labStorage); // 0
+    doors.push_back(secretExperiments); // 1
 
     // Create machine
     Machine *machine = new Machine("Machine", "I could send you to another dimension.", secret, battery, false);
 
-    machines.push_back(machine);
+    machines.push_back(machine); // 0
 
     // Create player
     player = new Player("Subject 34", "Subject shows big compatibilities with our travel test", mainLab);
@@ -81,63 +81,70 @@ bool World::ValidateInput(string input)
             {
                 player->TakeItem(items[0], actualRoomName);
                 player->hasKey = true;
+
                 return true;
             }
             else if (input == "drop key")
             {
-                player->hasKey = true;
                 player->DropItem(items[0], actualRoom);
+                player->hasKey = true;
+
                 return true;
             }
-            if (input == "take key card")
+            else if (input == "take key card")
             {
                 player->TakeItem(items[1], actualRoomName);
                 player->hasKeyCard = true;
+
                 return true;
             }
             else if (input == "drop key card")
             {
-                player->hasKeyCard = true;
                 player->DropItem(items[1], actualRoom);
+                player->hasKeyCard = true;
+
                 return true;
             }
-
-            if (input == "take knife")
+            else if (input == "take knife")
             {
                 player->TakeItem(items[2], actualRoomName);
                 player->hasKnife = true;
+
                 return true;
             }
             else if (input == "drop knife")
             {
-                player->hasKnife = true;
                 player->DropItem(items[2], actualRoom);
+                player->hasKnife = true;
+
                 return true;
             }
-
-            if (input == "take battery")
+            else if (input == "take battery")
             {
                 player->TakeItem(items[3], actualRoomName);
                 player->hasBattery = true;
+
                 return true;
             }
             else if (input == "drop battery")
             {
-                player->hasBattery = true;
                 player->DropItem(items[3], actualRoom);
+                player->hasBattery = true;
+
                 return true;
             }
-
-            if (input == "take pickaxe")
+            else if (input == "take pickaxe")
             {
                 player->TakeItem(items[3], actualRoomName);
-                player->haspickaxe = true;
+                player->hasPickaxe = true;
+
                 return true;
             }
             else if (input == "drop pickaxe")
             {
-                player->haspickaxe = true;
                 player->DropItem(items[3], actualRoom);
+                player->hasPickaxe = true;
+
                 return true;
             }
         }
@@ -145,6 +152,14 @@ bool World::ValidateInput(string input)
         if (input == "show inventory" || input == "inventory")
         {
             player->ShowInventory();
+
+            return true;
+        }
+
+        if (input == "show room" || input == "room")
+        {
+            player->ShowRoom();
+
             return true;
         }
 
@@ -156,12 +171,14 @@ bool World::ValidateInput(string input)
                 if (input == "untie")
                 {
                     player->Untie();
+
                     return true;
                 }
                 else
                 {
                     cout << "You are still tied."
                          << "\n";
+
                     return true;
                 }
             }
@@ -170,6 +187,8 @@ bool World::ValidateInput(string input)
                 if (input == "go lab")
                 {
                     player->ChangeRoom(rooms[1]);
+
+                    return true;
                 }
                 else
                 {
@@ -177,8 +196,10 @@ bool World::ValidateInput(string input)
                 }
             }
         }
-        if (actualRoomName == "Lab")
+        else if (actualRoomName == "Lab")
         {
+            Door *door = doors[0];
+
             if (input == "go main lab")
             {
                 player->ChangeRoom(rooms[0]);
@@ -189,14 +210,110 @@ bool World::ValidateInput(string input)
             }
             else if (input == "go storage")
             {
-                if (false)
+                if (!door->locked)
                 {
-                    player->ChangeRoom(rooms[6]);
+                    player->ChangeRoom(rooms[5]);
+                }
+                else
+                {
+                    cout << "The door is locked, you need the key to open it."
+                         << "\n";
+                }
+            }
+            else if (input == "open door" || input == "use key")
+            {
+                if (!door->locked)
+                {
+                    cout << "The door is opened."
+                         << "\n";
+                }
+                else if (player->hasKey)
+                {
+                    door->locked = false;
+                    cout << "Door to storage opened!"
+                         << "\n";
+                }
+                else
+                {
+                    cout << "You need the key to open the door."
+                         << "\n";
                 }
             }
             else
             {
                 valid = false;
+            }
+        }
+        else if (actualRoomName == "Computing")
+        {
+            if (input == "go lab")
+            {
+                player->ChangeRoom(rooms[1]);
+
+                return true;
+            }
+            if (input == "go experiments")
+            {
+                player->ChangeRoom(rooms[3]);
+
+                return true;
+            }
+            else
+            {
+                valid = false;
+            }
+        }
+        else if (actualRoomName == "Experiments")
+        {
+            Door *door = doors[1];
+
+            if (input == "go computing")
+            {
+                player->ChangeRoom(rooms[2]);
+            }
+            else if (input == "go secrete")
+            {
+                if (!door->locked)
+                {
+                    player->ChangeRoom(rooms[4]);
+                }
+                else
+                {
+                    cout << "The door is locked, you need the key card to open it."
+                         << "\n";
+                }
+            }
+            else if (input == "open door" || input == "use key card")
+            {
+                if (!door->locked)
+                {
+                    cout << "The door is opened."
+                         << "\n";
+                }
+                else if (player->hasKeyCard)
+                {
+                    door->locked = false;
+                    cout << "Door to secrete opened!"
+                         << "\n";
+                }
+                else
+                {
+                    cout << "You need the key card to open the door."
+                         << "\n";
+                }
+            }
+            else
+            {
+                valid = false;
+            }
+        }
+        else if (actualRoomName == "Secrete")
+        {
+            if (input == "go experiments")
+            {
+                player->ChangeRoom(rooms[3]);
+
+                return true;
             }
         }
     }
