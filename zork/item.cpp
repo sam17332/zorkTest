@@ -9,3 +9,8 @@ Item::Item(const char *name, const char *description, Entity *parent, ItemType i
 Item::~Item()
 {
 }
+
+void Item::ChangeParent(Entity *newParent)
+{
+    parent = newParent;
+}
