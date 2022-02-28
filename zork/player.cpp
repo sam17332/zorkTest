@@ -128,7 +128,6 @@ void Player::ShowRoom()
 void Player::UseItem(ItemType type)
 {
 	Item *item = SearchItem(type, true);
-	cout << "A borrar: " << item->name << "\n";
 	delete item;
 
 	if (type == 0) // Key
@@ -160,7 +159,7 @@ void Player::UseMachine(Machine *machine, bool inPresentParam)
 {
 	if (inPresentParam)
 	{
-		cout << "You are no longer in the present. You are on another dimension."
+		cout << "You are no longer in the present. You are on another dimension where you can't be seen and you can't interact with anything."
 			 << "\n";
 
 		inPresent = false;
