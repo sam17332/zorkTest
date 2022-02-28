@@ -13,6 +13,7 @@ public:
     ~Room();
 
     void Visit();
+    void VisitStorageOtherDimension();
 
 public:
     bool visited;

@@ -11,6 +11,9 @@ Room::~Room()
 {
 }
 
+/*
+* Prints the information depending if the room was already visited or not.
+*/
 void Room::Visit()
 {
 	cout << name << "\n";
@@ -20,4 +23,13 @@ void Room::Visit()
 		cout << description << "\n";
 		visited = true;
 	}
+}
+
+/*
+* Specific function to print information when the player enters the
+* storage from the other dimension.
+*/
+void Room::VisitStorageOtherDimension()
+{
+	cout << "It looks like a few years ago there was a hole on the wall, maybe you can open it with somethig" << "\n";
 }
