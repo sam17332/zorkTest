@@ -11,3 +11,10 @@ Machine::Machine(const char *name, const char *description, Entity *parent, Item
 Machine::~Machine()
 {
 }
+
+void Machine::Charge(bool chargedParam)
+{
+    charged = chargedParam;
+
+    cout << description << "\n";
+}

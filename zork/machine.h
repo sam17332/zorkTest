@@ -11,6 +11,8 @@ public:
     Machine(const char *name, const char *description, Entity *parent, Item *chargesWith, bool charged = false);
     ~Machine();
 
+    void Charge(bool chargedParam);
+
 public:
     bool charged;
 };
