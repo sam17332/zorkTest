@@ -12,6 +12,7 @@ public:
     ~Door();
 
 public:
+    bool locked;
 };
 
 #endif //_Door
