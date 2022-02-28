@@ -21,12 +21,12 @@ public:
     Item(const char *name, const char *description, Entity *parent, ItemType itemType);
     ~Item();
 
-    void ChangeParent(Entity *newParent);
+    Item* ChangeParent(Entity *newParent);
 
 public:
     ItemType itemType;
-    std::string name;
-    std::string description;
+    string name;
+    string description;
     Entity *parent;
 };
 
