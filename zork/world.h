@@ -11,6 +11,7 @@ class Item;
 class Door;
 class Machine;
 class Player;
+class Creature;
 
 class World
 {
@@ -25,6 +26,7 @@ public:
 
 private:
     Player *player;
+    Creature *creature;
     vector<Room *> rooms;
     vector<Item *> items;
     vector<Door *> doors;
