@@ -45,22 +45,36 @@ void Player::TakeItem(Item *itemParam, string roomName)
 
 	if (roomName != parentName)
 	{
-		cout << "The item " << itemParam->name << " you are trying to take is not in this room."
+		cout << "The item '" << itemParam->name << "' you are trying to take is not in this room."
 			 << "\n";
 	}
 	else
 	{
-		itemParam->ChangeParent(this);
-		items.push_back(itemParam);
-		Item *item = items[items.size()];
-		cout << itemName << " taken"
+		Item *item = itemParam->ChangeParent(this);
+		items.push_back(item);
+		cout << item->name << " taken"
 			 << "\n";
 	}
 }
 
 void Player::DropItem(Item *itemParam, Room *room)
 {
-	cout << "DropItem: " << itemParam->name;
+	int index;
+
+	for (int i = 0; i < items.size(); i++)
+	{
+		if (items[i]->name == itemParam->name)
+		{
+			index = i;
+			break;
+		}
+	}
+
+	Item *item = itemParam->ChangeParent(room);
+	cout << item->name << " dropped" << "\n \n";
+	items.erase(items.begin() + index);
+
+	ShowInventory();
 }
 
 void Player::ShowInventory()
@@ -76,7 +90,7 @@ void Player::ShowInventory()
 			 << "\n";
 		for (int i = 0; i < items.size(); i++)
 		{
-			cout << items[i]->name << "\n";
+			cout << "-" << items[i]->name << "\n";
 		}
 	}
 }
