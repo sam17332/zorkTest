@@ -53,7 +53,9 @@ void Player::TakeItem(Item *itemParam, string roomName)
 		Item *item = itemParam->ChangeParent(this);
 		items.push_back(item);
 		cout << item->name << " taken"
-			 << "\n";
+			 << "\n \n";
+
+		ShowInventory();
 	}
 }
 
@@ -71,7 +73,8 @@ void Player::DropItem(Item *itemParam, Room *room)
 	}
 
 	Item *item = itemParam->ChangeParent(room);
-	cout << item->name << " dropped" << "\n \n";
+	cout << item->name << " dropped"
+		 << "\n \n";
 	items.erase(items.begin() + index);
 
 	ShowInventory();
@@ -93,4 +96,9 @@ void Player::ShowInventory()
 			cout << "-" << items[i]->name << "\n";
 		}
 	}
+}
+
+void Player::ShowRoom()
+{
+	cout << "Actual room: " << GetRoomsName() << "\n";
 }
