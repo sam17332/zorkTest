@@ -17,6 +17,14 @@ World::World()
     Room *storage = new Room("Storage", "There's a pickaxe battery in here.");
     Room *street = new Room("Street", "Finally!! you are outside!");
 
+    rooms.push_back(mainLab);
+    rooms.push_back(lab);
+    rooms.push_back(computing);
+    rooms.push_back(experiments);
+    rooms.push_back(secret);
+    rooms.push_back(storage);
+    rooms.push_back(street);
+
     // Create items
     Item *key = new Item("Key", "Storage key", computing, KEY);
     Item *keyCard = new Item("KeyCard", "Secrete key", mainLab, KEY);
@@ -24,16 +32,28 @@ World::World()
     Item *battery = new Item("Battery", "Charged battery", storage, BATTERY);
     Item *pickaxe = new Item("Pickaxe", "Big pickaxe", experiments, BATTERY);
 
+    items.push_back(key);
+    items.push_back(keyCard);
+    items.push_back(knife);
+    items.push_back(battery);
+    items.push_back(pickaxe);
+
     // Create doors
     Door *labStorage = new Door("Door1", "This door is between the lab room and the storage room", lab, storage, key, true);
     Door *secretExperiments = new Door("Doo2", "This door is between the experimients room and the secrete room", experiments, secret, keyCard, true);
 
+    doors.push_back(labStorage);
+    doors.push_back(secretExperiments);
+
     // Create machine
     Machine *machine = new Machine("Machine", "I could send you to another dimension.", secret, battery, false);
+
+    machines.push_back(machine);
 
     // Create player
     player = new Player("Subject 34", "Subject shows big compatibilities with our travel test", mainLab);
     player->isTied = true;
+    player->inPresent = true;
 
     cout << mainLab->name << "\n";
     cout << mainLab->description << "\n";
@@ -47,29 +67,68 @@ World::~World()
 bool World::ValidateInput(string input)
 {
     bool valid = true;
-    string actualRoom = player->GetRoom();
+    string actualRoomName = player->GetRoomsName();
+    Room *actualRoom = player->room;
 
-    if (actualRoom == "MainLab")
+    if (player->inPresent)
     {
-        std::vector<string> options{"untie", "take key card", "drop key card", "go lab"};
-        std::vector<string>::iterator iterator;
-        iterator = std::find(options.begin(), options.end(), input);
-
-        if (player->isTied)
+        // If player is no longer tied
+        if (!player->isTied)
         {
-            if (input == "untie")
+            // Since the take/drop actions can be used in any room,
+            // we need the conditions for them outside of the conditions for each room.
+            if (input == "take key card")
             {
-                player->Untie();
+                player->TakeItem(items[1], actualRoomName);
+                return true;
+            }
+            else if (input == "drop key card")
+            {
+                player->DropItem(items[1], actualRoom);
+                return true;
+            }
+        }
+        if (input == "show inventory" || input == "inventory")
+        {
+            player->ShowInventory();
+            return true;
+        }
+
+        if (actualRoomName == "MainLab")
+        {
+            // If player is no longer tied
+            if (player->isTied)
+            {
+                if (input == "untie")
+                {
+                    player->Untie();
+                    return true;
+                }
+                else
+                {
+                    cout << "You are still tied."
+                         << "\n";
+                    return true;
+                }
             }
             else
             {
-                cout << "You are still tied."
-                     << "\n";
+                if (input == "go lab")
+                {
+                    player->ChangeRoom(rooms[1]);
+                }
+                else
+                {
+                    valid = false;
+                }
             }
         }
-        // else
-        // {
-        // }
     }
+    else
+    {
+        cout << "You are no longer in your present. You are on another dimension."
+             << "\n";
+    }
+
     return valid;
 }
