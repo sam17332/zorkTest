@@ -155,9 +155,9 @@ void Player::UseItem(ItemType type)
 /*
  * Function to do needed the logic when the machine is used
  */
-void Player::UseMachine(Machine *machine, bool inPresentParam)
+void Player::UseMachine()
 {
-	if (inPresentParam)
+	if (inPresent)
 	{
 		cout << "You are no longer in the present. You are on another dimension where you can't be seen and you can't interact with anything."
 			 << "\n";
@@ -166,11 +166,11 @@ void Player::UseMachine(Machine *machine, bool inPresentParam)
 	}
 	else
 	{
+		cout << "Welcome to you dimension."
+			 << "\n";
 		inPresent = true;
 		returned = true;
 	}
-
-	cout << "machine " << inPresentParam << "\n";
 }
 
 /*

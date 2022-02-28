@@ -9,7 +9,6 @@ using namespace std;
 
 class Room;
 class Item;
-class Machine;
 
 class Player : public Creature
 {
@@ -28,7 +27,7 @@ public:
     void DropItem(Item *item, Room *room);
     void ShowInventory();
     void UseItem(ItemType type);
-    void UseMachine(Machine *machine, bool inPresentParam);
+    void UseMachine();
     Item *SearchItem(ItemType type, bool deleteParam);
 
 public:
