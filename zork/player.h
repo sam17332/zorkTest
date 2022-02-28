@@ -29,7 +29,7 @@ public:
     void ShowInventory();
     void UseItem(ItemType type);
     void UseMachine(Machine *machine, bool inPresentParam);
-    Item* SearchItem(ItemType type, bool deleteParam);
+    Item *SearchItem(ItemType type, bool deleteParam);
 
 public:
     bool hasKey;

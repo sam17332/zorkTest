@@ -15,16 +15,16 @@ Player::~Player()
 }
 
 /*
-* Function to get name of the room where the player is
-*/
+ * Function to get name of the room where the player is
+ */
 string Player::GetRoomsName()
 {
 	return room->name;
 }
 
 /*
-* Function to untie the player
-*/
+ * Function to untie the player
+ */
 void Player::Untie()
 {
 	if (isTied)
@@ -36,8 +36,8 @@ void Player::Untie()
 }
 
 /*
-* Function to change the actual room of the player
-*/
+ * Function to change the actual room of the player
+ */
 void Player::ChangeRoom(Room *roomParam)
 {
 	room = roomParam;
@@ -45,8 +45,8 @@ void Player::ChangeRoom(Room *roomParam)
 }
 
 /*
-* Function to take an item
-*/
+ * Function to take an item
+ */
 void Player::TakeItem(Item *itemParam, string roomName)
 {
 	string parentName = itemParam->parent->name;
@@ -69,8 +69,8 @@ void Player::TakeItem(Item *itemParam, string roomName)
 }
 
 /*
-* Function to drop an item
-*/
+ * Function to drop an item
+ */
 void Player::DropItem(Item *itemParam, Room *room)
 {
 	int index;
@@ -93,8 +93,8 @@ void Player::DropItem(Item *itemParam, Room *room)
 }
 
 /*
-* Function to show the players inventory
-*/
+ * Function to show the players inventory
+ */
 void Player::ShowInventory()
 {
 	if (items.size() == 0)
@@ -115,57 +115,69 @@ void Player::ShowInventory()
 }
 
 /*
-* Function to show the room where the player is
-*/
+ * Function to show the room where the player is
+ */
 void Player::ShowRoom()
 {
 	cout << "Actual room: " << GetRoomsName() << "\n";
 }
 
-
 /*
-* Function to do needed the logic when an item is used
-*/
+ * Function to do needed the logic when an item is used
+ */
 void Player::UseItem(ItemType type)
 {
 	Item *item = SearchItem(type, true);
 	cout << "A borrar: " << item->name << "\n";
 	delete item;
 
-	if (type == 0) //Key
+	if (type == 0) // Key
 	{
 		hasKey = false;
 	}
-	else if (type == 1) //Key card
+	else if (type == 1) // Key card
 	{
 		hasKeyCard = false;
 	}
-	else if (type == 2) //Battery
+	else if (type == 2) // Battery
 	{
 		hasBattery = false;
 	}
-	else if (type == 3) //Tool
+	else if (type == 3) // Tool
 	{
 		hasPickaxe = false;
 	}
-	else if (type == 4) //Weapon
+	else if (type == 4) // Weapon
 	{
 		hasKnife = false;
 	}
 }
 
 /*
-* Function to do needed the logic when the machine is used
-*/
+ * Function to do needed the logic when the machine is used
+ */
 void Player::UseMachine(Machine *machine, bool inPresentParam)
 {
+	if (inPresentParam)
+	{
+		cout << "You are no longer in the present. You are on another dimension."
+			 << "\n";
+
+		inPresent = false;
+	}
+	else
+	{
+		inPresent = true;
+		returned = true;
+	}
+
 	cout << "machine " << inPresentParam << "\n";
 }
 
 /*
-* Function to search for an especific item
-*/
-Item* Player::SearchItem(ItemType type, bool deleteParam)
+ * Function to search for an especific item
+ */
+Item *Player::SearchItem(ItemType type, bool deleteParam)
 {
 	int index;
 
