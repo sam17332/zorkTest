@@ -269,7 +269,7 @@ bool World::ValidateInput(string input)
 
                 return true;
             }
-            if (input == "go experiments")
+            else if (input == "go experiments")
             {
                 player->ChangeRoom(rooms[3]);
 
@@ -348,7 +348,7 @@ bool World::ValidateInput(string input)
 
                 return true;
             }
-            if (input == "use machine")
+            else if (input == "use machine")
             {
                 if (machine->charged)
                 {
@@ -364,7 +364,7 @@ bool World::ValidateInput(string input)
                     return true;
                 }
             }
-            if (input == "charge machine" || input == "use battery")
+            else if (input == "charge machine" || input == "use battery")
             {
                 if (player->hasBattery)
                 {
@@ -390,7 +390,7 @@ bool World::ValidateInput(string input)
 
                 return true;
             }
-            if (input == "use pickaxe")
+            else if (input == "use pickaxe")
             {
                 if (player->hasPickaxe && player->returned)
                 {
@@ -414,8 +414,85 @@ bool World::ValidateInput(string input)
     }
     else
     {
-        cout << "You are no longer in your present. You are on another dimension."
-             << "\n";
+        if (actualRoomName == "Secrete")
+        {
+            if (input == "go experiments")
+            {
+                player->ChangeRoom(rooms[3]);
+
+                return true;
+            }
+        }
+        else if (actualRoomName == "experiments")
+        {
+            if (input == "go computing")
+            {
+                player->ChangeRoom(rooms[2]);
+
+                return true;
+            }
+            else if (input == "go secret")
+            {
+                player->ChangeRoom(rooms[4]);
+
+                return true;
+            }
+        }
+        else if (actualRoomName == "Computing")
+        {
+            if (input == "go lab")
+            {
+                player->ChangeRoom(rooms[1]);
+
+                return true;
+            }
+            else if (input == "go experiments")
+            {
+                player->ChangeRoom(rooms[3]);
+
+                return true;
+            }
+        }
+        else if (actualRoomName == "Lab")
+        {
+            if (input == "go main lab")
+            {
+                player->ChangeRoom(rooms[0]);
+
+                return true;
+            }
+            else if (input == "go computing")
+            {
+                player->ChangeRoom(rooms[2]);
+
+                return true;
+            }
+            else if (input == "go storage")
+            {
+                rooms[5]->VisitStorageOtherDimension();
+                player->ChangeRoom(rooms[5]);
+
+                return true;
+            }
+        }
+        else if (actualRoomName == "MainLab")
+        {
+            if (input == "go lab")
+            {
+                player->ChangeRoom(rooms[1]);
+
+                return true;
+            }
+        }
+        else if (actualRoomName == "Storage")
+        {
+            if (input == "go lab")
+            {
+                player->ChangeRoom(rooms[1]);
+
+                return true;
+            }
+        }
     }
 
     return false;
