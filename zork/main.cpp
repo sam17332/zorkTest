@@ -38,9 +38,9 @@ int main()
 		if(!world.ValidateInput(input))
 		{
 			cout << "Thats something I dont understand."
- 				 << "\n"
  				 << "\n";
 		}
+		cout << "\n";
 	}
 
 	return 0;
