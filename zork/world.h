@@ -17,7 +17,11 @@ class World
 public:
     World();
     ~World();
+
     bool ValidateInput(string input);
+
+public:
+    bool finished;
 
 private:
     Player *player;
