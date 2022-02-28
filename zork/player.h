@@ -3,11 +3,13 @@
 
 #include <vector>
 #include "creature.h"
+#include "item.h"
 
 using namespace std;
 
 class Room;
 class Item;
+class Machine;
 
 class Player : public Creature
 {
@@ -25,6 +27,9 @@ public:
     void TakeItem(Item *item, string roomName);
     void DropItem(Item *item, Room *room);
     void ShowInventory();
+    void UseItem(ItemType type);
+    void UseMachine(Machine *machine, bool inPresentParam);
+    Item* SearchItem(ItemType type, bool deleteParam);
 
 public:
     bool hasKey;
@@ -34,6 +39,7 @@ public:
     bool hasPickaxe;
     bool isTied;
     bool inPresent;
+    bool returned;
     Room *room;
     vector<Item *> items;
 };
