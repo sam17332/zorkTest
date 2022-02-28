@@ -12,6 +12,7 @@ public:
     ~Machine();
 
 public:
+    bool charged;
 };
 
 #endif //_Machine
