@@ -123,7 +123,7 @@ void Player::ShowRoom()
 }
 
 /*
- * Function to do needed the logic when an item is used
+ * Function with the needed logic when an item is used
  */
 void Player::UseItem(ItemType type)
 {
@@ -191,7 +191,7 @@ Item *Player::SearchItem(ItemType type, bool deleteParam)
 
 	Item *item = items[index];
 
-	// Only if needed is deleted from dthe items of the player
+	// Only if needed, the item is deleted from the items of the player
 	if (deleteParam)
 	{
 		items.erase(items.begin() + index);

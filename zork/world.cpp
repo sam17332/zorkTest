@@ -30,7 +30,7 @@ World::World()
     Item *keyCard = new Item("KeyCard", "Secret key", mainLab, KEYCARD);
     Item *knife = new Item("Knife", "Sharp knife", lab, WEAPON);
     Item *battery = new Item("Battery", "Charged battery", storage, BATTERY);
-    Item *pickaxe = new Item("Pickaxe", "Big pickaxe", experiments, BATTERY);
+    Item *pickaxe = new Item("Pickaxe", "Big pickaxe", experiments, TOOL);
 
     items.push_back(key);     // 0
     items.push_back(keyCard); // 1
@@ -70,6 +70,20 @@ bool World::ValidateInput(string input)
 {
     string actualRoomName = player->GetRoomsName();
     Room *actualRoom = player->room;
+
+    if (input == "show inventory" || input == "inventory")
+    {
+        player->ShowInventory();
+
+        return true;
+    }
+
+    if (input == "show room" || input == "room")
+    {
+        player->ShowRoom();
+
+        return true;
+    }
 
     if (player->inPresent)
     {
@@ -148,20 +162,6 @@ bool World::ValidateInput(string input)
 
                 return true;
             }
-        }
-
-        if (input == "show inventory" || input == "inventory")
-        {
-            player->ShowInventory();
-
-            return true;
-        }
-
-        if (input == "show room" || input == "room")
-        {
-            player->ShowRoom();
-
-            return true;
         }
 
         if (actualRoomName == "MainLab")
@@ -395,6 +395,7 @@ bool World::ValidateInput(string input)
                 if (player->hasPickaxe && player->returned && player->inPresent)
                 {
                     player->ChangeRoom(rooms[6]);
+                    finished = true;
 
                     return true;
                 }
@@ -414,7 +415,7 @@ bool World::ValidateInput(string input)
     }
     else
     {
-        if (actualRoomName == "Secrete")
+        if (actualRoomName == "Secret")
         {
             if (input == "go experiments")
             {
@@ -422,16 +423,18 @@ bool World::ValidateInput(string input)
 
                 return true;
             }
-            else if(input == "use machine")
+            else if (input == "use machine")
             {
                 player->UseMachine();
+
+                return true;
             }
             else
             {
                 return false;
             }
         }
-        else if (actualRoomName == "experiments")
+        else if (actualRoomName == "Experiments")
         {
             if (input == "go computing")
             {
