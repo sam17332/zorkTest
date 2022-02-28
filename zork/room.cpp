@@ -20,7 +20,7 @@ void Room::Visit()
 
 	if (!visited)
 	{
-		cout << description << "\n";
+		cout << description << "\n \n";
 		visited = true;
 	}
 }
