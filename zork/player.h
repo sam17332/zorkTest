@@ -29,7 +29,7 @@ public:
     bool hasKey;
     bool hasKeyCard;
     bool hasKnife;
-    bool hasbattery;
+    bool hasBattery;
     bool hasPickaxe;
     bool isTied;
     bool inPresent;
