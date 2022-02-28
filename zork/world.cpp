@@ -80,14 +80,30 @@ bool World::ValidateInput(string input)
             if (input == "take key card")
             {
                 player->TakeItem(items[1], actualRoomName);
+                player->hasKeyCard = true;
                 return true;
             }
             else if (input == "drop key card")
             {
+                player->hasKeyCard = true;
+                player->DropItem(items[1], actualRoom);
+                return true;
+            }
+
+            if (input == "take knife")
+            {
+                player->TakeItem(items[1], actualRoomName);
+                player->hasKnife = true;
+                return true;
+            }
+            else if (input == "drop knife")
+            {
+                player->hasKnife = true;
                 player->DropItem(items[1], actualRoom);
                 return true;
             }
         }
+
         if (input == "show inventory" || input == "inventory")
         {
             player->ShowInventory();
@@ -121,6 +137,28 @@ bool World::ValidateInput(string input)
                 {
                     valid = false;
                 }
+            }
+        }
+        if (actualRoomName == "Lab")
+        {
+            if (input == "go main lab")
+            {
+                player->ChangeRoom(rooms[0]);
+            }
+            else if (input == "go computing")
+            {
+                player->ChangeRoom(rooms[2]);
+            }
+            else if (input == "go storage")
+            {
+                if (false)
+                {
+                    player->ChangeRoom(rooms[6]);
+                }
+            }
+            else
+            {
+                valid = false;
             }
         }
     }
