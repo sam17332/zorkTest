@@ -33,6 +33,7 @@ int main()
 	bool exit = true;
 	while (exit)
 	{
+		cout << ">> ";
 		std::getline(std::cin, input);
 
 		if(!world.ValidateInput(input))
@@ -40,6 +41,7 @@ int main()
 			cout << "Thats something I dont understand."
  				 << "\n";
 		}
+
 		cout << "\n";
 	}
 
