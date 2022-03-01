@@ -28,6 +28,7 @@ public:
     void ShowInventory();
     void UseItem(ItemType type);
     void UseMachine();
+    void UseKnife(Creature *creature, Item *item);
     Item *SearchItem(ItemType type, bool deleteParam);
 
 public:

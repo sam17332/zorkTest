@@ -199,3 +199,8 @@ Item *Player::SearchItem(ItemType type, bool deleteParam)
 
 	return item;
 }
+
+void Player::UseKnife(Creature *creature, Item *item)
+{
+	creature->ReceiveAttack(item->damage);
+}
