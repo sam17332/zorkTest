@@ -7,14 +7,14 @@
 <p align="center">C++ Test</p>
 <hr />
 
-## About
+# About
 I had to make a simple command line game based on Zork.
 In my version, you wake up in an empty laboratory and you need to explore the different rooms to find a way out. You need to take all the objects that are on the different rooms and use them when you need them.
 
-## How to play
+# How to play
 Dependeing on the room you are, are the words that the game recognizes. You need to see the map of the laboratory to know how the rooms are conected, reading everything that appears on screen is a must for you to understand what is happening.
 
-#### Commands you can use
+### Commands you can use
 
 Take an object, for example:
 You are on the lab and want to take the knife
@@ -57,7 +57,7 @@ Everything you type needs to be in lowercase, otherwise the game would not recog
 ### Laboratory map
 ![Map](./map.png)
 
-## Guide to finish the game
+# Guide to finish the game
 To finish the game you need to do a series of steps
 
 1. You need to untie your self.
@@ -80,9 +80,9 @@ Congrats, you finished the game (:
 
 Gameplay link: https://www.youtube.com/watch?v=8ZH_iIZpuEo
 
-## Compile and execute
+# Compile and execute
 
-#### For Mac
+### For Mac
 Inside of the folder where you have all the files.
 -To compile run:
 ```c++
@@ -93,14 +93,14 @@ g++ main.cpp world.cpp room.cpp item.cpp entity.cpp door.cpp creature.cpp player
 ./main
 ```
 
-#### For Windows
+### For Windows
 Double click on the executable file.
 
-## Github repository
+# Github repository
 https://github.com/sam17332/zorkTest
 
-## Repository used as example
+# Repository used as example
 https://github.com/d0n3val/zork
 
-## Author
+# Author
 Rodrigo Samayoa Morales
