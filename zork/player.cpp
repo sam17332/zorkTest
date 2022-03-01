@@ -74,6 +74,7 @@ void Player::TakeItem(Item *itemParam, string roomName)
 void Player::DropItem(Item *itemParam, Room *room)
 {
 	int index;
+	index = 0;
 
 	for (int i = 0; i < items.size(); i++)
 	{
@@ -181,6 +182,7 @@ void Player::UseMachine()
 Item *Player::SearchItem(ItemType type, bool deleteParam)
 {
 	int index;
+	index = 0;
 
 	for (int i = 0; i < items.size(); i++)
 	{

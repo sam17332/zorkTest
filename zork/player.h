@@ -12,9 +12,6 @@ class Item;
 
 class Player : public Creature
 {
-private:
-    int actualRoom;
-
 public:
     Player(const char *name, const char *description, Room *room);
     ~Player();
