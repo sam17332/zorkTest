@@ -20,9 +20,11 @@ public:
     ~World();
 
     bool ValidateInput(string input);
+    void Move();
 
 public:
     bool finished;
+    int moves;
 
 private:
     Player *player;

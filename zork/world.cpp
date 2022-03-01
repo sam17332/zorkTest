@@ -58,11 +58,20 @@ World::World()
     player->isTied = true;
     player->inPresent = true;
 
+    moves = 0;
+
     mainLab->Visit();
 }
 
 World::~World()
 {
+}
+
+void World::Move()
+{
+    moves += 1;
+
+    cout << "Moves: " << moves << "\n \n";
 }
 
 /*
@@ -198,6 +207,7 @@ bool World::ValidateInput(string input)
             {
                 if (input == "go lab")
                 {
+                    Move();
                     player->ChangeRoom(rooms[1]);
 
                     return true;
@@ -215,12 +225,14 @@ bool World::ValidateInput(string input)
 
             if (input == "go main lab")
             {
+                Move();
                 player->ChangeRoom(rooms[0]);
 
                 return true;
             }
             else if (input == "go computing")
             {
+                Move();
                 player->ChangeRoom(rooms[2]);
 
                 return true;
@@ -231,6 +243,7 @@ bool World::ValidateInput(string input)
                 {
                     if (!door->locked)
                     {
+                        Move();
                         player->ChangeRoom(rooms[5]);
 
                         return true;
@@ -247,6 +260,7 @@ bool World::ValidateInput(string input)
                 {
                     if (player->hasKnife)
                     {
+                        Move();
                         player->ChangeRoom(rooms[5]);
 
                         return true;
@@ -295,6 +309,7 @@ bool World::ValidateInput(string input)
         {
             if (input == "go lab")
             {
+                Move();
                 player->ChangeRoom(rooms[1]);
 
                 if (player->returned)
@@ -312,6 +327,7 @@ bool World::ValidateInput(string input)
             }
             else if (input == "go experiments")
             {
+                Move();
                 player->ChangeRoom(rooms[3]);
 
                 return true;
@@ -328,6 +344,7 @@ bool World::ValidateInput(string input)
 
             if (input == "go computing")
             {
+                Move();
                 player->ChangeRoom(rooms[2]);
 
                 return true;
@@ -336,6 +353,7 @@ bool World::ValidateInput(string input)
             {
                 if (!door->locked)
                 {
+                    Move();
                     player->ChangeRoom(rooms[4]);
 
                     return true;
@@ -385,6 +403,7 @@ bool World::ValidateInput(string input)
 
             if (input == "go experiments")
             {
+                Move();
                 player->ChangeRoom(rooms[3]);
 
                 return true;
@@ -427,6 +446,7 @@ bool World::ValidateInput(string input)
         {
             if (input == "go lab")
             {
+                Move();
                 player->ChangeRoom(rooms[1]);
 
                 return true;
@@ -460,6 +480,7 @@ bool World::ValidateInput(string input)
                     {
                         if (player->hasPickaxe && player->returned && player->inPresent)
                         {
+                            Move();
                             player->UseItem(TOOL);
                             player->ChangeRoom(rooms[6]);
                             finished = true;
@@ -495,6 +516,7 @@ bool World::ValidateInput(string input)
         {
             if (input == "go experiments")
             {
+                Move();
                 player->ChangeRoom(rooms[3]);
 
                 return true;
@@ -514,12 +536,14 @@ bool World::ValidateInput(string input)
         {
             if (input == "go computing")
             {
+                Move();
                 player->ChangeRoom(rooms[2]);
 
                 return true;
             }
             else if (input == "go secret")
             {
+                Move();
                 player->ChangeRoom(rooms[4]);
 
                 return true;
@@ -533,12 +557,14 @@ bool World::ValidateInput(string input)
         {
             if (input == "go lab")
             {
+                Move();
                 player->ChangeRoom(rooms[1]);
 
                 return true;
             }
             else if (input == "go experiments")
             {
+                Move();
                 player->ChangeRoom(rooms[3]);
 
                 return true;
@@ -552,18 +578,21 @@ bool World::ValidateInput(string input)
         {
             if (input == "go main lab")
             {
+                Move();
                 player->ChangeRoom(rooms[0]);
 
                 return true;
             }
             else if (input == "go computing")
             {
+                Move();
                 player->ChangeRoom(rooms[2]);
 
                 return true;
             }
             else if (input == "go storage")
             {
+                Move();
                 player->ChangeRoom(rooms[5]);
                 rooms[5]->VisitStorageOtherDimension();
 
@@ -578,6 +607,7 @@ bool World::ValidateInput(string input)
         {
             if (input == "go lab")
             {
+                Move();
                 player->ChangeRoom(rooms[1]);
 
                 return true;
@@ -591,6 +621,7 @@ bool World::ValidateInput(string input)
         {
             if (input == "go lab")
             {
+                Move();
                 player->ChangeRoom(rooms[1]);
 
                 return true;
