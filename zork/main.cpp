@@ -46,7 +46,7 @@ int main()
 
 		if (world.finished)
 		{
-			cout << "Total moves: " << world.moves <<;
+			cout << "Total moves: " << world.moves;
 			exit = false;
 		}
 
