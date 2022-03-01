@@ -30,16 +30,18 @@ int main()
 	World world;
 	string input;
 
+	cout << "Moves: 0" << "\n \n";
+
 	bool exit = true;
 	while (exit)
 	{
 		cout << ">> ";
 		std::getline(std::cin, input);
 
-		if(!world.ValidateInput(input))
+		if (!world.ValidateInput(input))
 		{
 			cout << "Thats something I dont understand."
- 				 << "\n";
+				 << "\n";
 		}
 
 		if (world.finished)
