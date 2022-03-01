@@ -5,6 +5,7 @@
 #include "door.h"
 #include "player.h"
 #include "machine.h"
+#include "creature.h"
 
 World::World()
 {
@@ -31,6 +32,8 @@ World::World()
     Item *knife = new Item("Knife", "Sharp knife", lab, WEAPON);
     Item *battery = new Item("Battery", "Charged battery", storage, BATTERY);
     Item *pickaxe = new Item("Pickaxe", "Big pickaxe", experiments, TOOL);
+
+    knife->damage = 1;
 
     items.push_back(key);     // 0
     items.push_back(keyCard); // 1
@@ -129,8 +132,16 @@ bool World::ValidateInput(string input)
             }
             else if (input == "drop knife")
             {
-                player->DropItem(items[2], actualRoom);
-                player->hasKnife = true;
+                if (actualRoomName == "Storage")
+                {
+                    cout << "Don't drop me here, maybe you'll need me!"
+                         << "\n";
+                }
+                else
+                {
+                    player->DropItem(items[2], actualRoom);
+                    player->hasKnife = true;
+                }
 
                 return true;
             }
@@ -216,18 +227,37 @@ bool World::ValidateInput(string input)
             }
             else if (input == "go storage")
             {
-                if (!door->locked)
+                if (!player->returned)
                 {
-                    player->ChangeRoom(rooms[5]);
+                    if (!door->locked)
+                    {
+                        player->ChangeRoom(rooms[5]);
 
-                    return true;
+                        return true;
+                    }
+                    else
+                    {
+                        cout << "The door is locked, you need the key to open it."
+                             << "\n";
+
+                        return true;
+                    }
                 }
                 else
                 {
-                    cout << "The door is locked, you need the key to open it."
-                         << "\n";
+                    if (player->hasKnife)
+                    {
+                        player->ChangeRoom(rooms[5]);
 
-                    return true;
+                        return true;
+                    }
+                    else
+                    {
+                        cout << "You need the knife to go in there."
+                             << "\n";
+
+                        return true;
+                    }
                 }
             }
             else if (input == "open door" || input == "use key")
@@ -266,6 +296,17 @@ bool World::ValidateInput(string input)
             if (input == "go lab")
             {
                 player->ChangeRoom(rooms[1]);
+
+                if (player->returned)
+                {
+                    cout << "Did you here that? Souds like a theres a wolf inside the storage."
+                         << "\n";
+                    cout << "You'll need something to kill him."
+                         << "\n";
+
+                    creature = new Creature("Wolf", "", rooms[5]);
+                    creature->life = 3;
+                }
 
                 return true;
             }
@@ -390,18 +431,53 @@ bool World::ValidateInput(string input)
 
                 return true;
             }
-            else if (input == "use pickaxe")
+            else if (input == "use knife" || input == "kill wolf")
             {
-                if (player->hasPickaxe && player->returned && player->inPresent)
+                if (player->hasKnife)
                 {
-                    player->ChangeRoom(rooms[6]);
-                    finished = true;
+                    player->UseKnife(creature, items[2]);
+
+                    if (creature->dead)
+                    {
+                        player->UseItem(WEAPON);
+                    }
 
                     return true;
                 }
                 else
                 {
-                    cout << "you want to use the pickaxe for what exactly?"
+                    cout << "With what you want to kill the wolf? With your hands?"
+                         << "\n";
+
+                    return true;
+                }
+            }
+            else if (input == "use pickaxe")
+            {
+                if (player->returned)
+                {
+                    if (creature->dead)
+                    {
+                        if (player->hasPickaxe && player->returned && player->inPresent)
+                        {
+                            player->UseItem(TOOL);
+                            player->ChangeRoom(rooms[6]);
+                            finished = true;
+
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        cout << "You need to kill the wolf first! You can't try to open a hole in the wall with the wolf trying to kill you!"
+                             << "\n";
+
+                        return true;
+                    }
+                }
+                else
+                {
+                    cout << "You want to use the pickaxe for what exactly?"
                          << "\n";
 
                     return true;
