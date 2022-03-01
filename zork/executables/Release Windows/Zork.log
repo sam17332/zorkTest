@@ -1,0 +1,14 @@
+﻿  creature.cpp
+  door.cpp
+  entity.cpp
+  item.cpp
+  machine.cpp
+  player.cpp
+  room.cpp
+  world.cpp
+  Zork.cpp
+  Generando código
+  Previous IPDB not found, fall back to full compilation.
+  All 368 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Generación de código finalizada
+  Zork.vcxproj -> C:\Users\josea\source\repos\Zork\x64\Release\Zork.exe
