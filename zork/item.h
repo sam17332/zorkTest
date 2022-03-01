@@ -29,6 +29,7 @@ public:
     string name;
     string description;
     Entity *parent;
+    int damage;
 };
 
 #endif //_Item
