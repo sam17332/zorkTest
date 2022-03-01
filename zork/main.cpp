@@ -30,7 +30,8 @@ int main()
 	World world;
 	string input;
 
-	cout << "Moves: 0" << "\n \n";
+	cout << "Moves: 0"
+		 << "\n \n";
 
 	bool exit = true;
 	while (exit)

@@ -12,6 +12,9 @@ Machine::~Machine()
 {
 }
 
+/*
+ * Changes the charged propertie of the Machine
+ */
 void Machine::Charge(bool chargedParam)
 {
     charged = chargedParam;

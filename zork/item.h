@@ -22,7 +22,7 @@ public:
     Item(const char *name, const char *description, Entity *parent, ItemType itemType);
     ~Item();
 
-    Item* ChangeParent(Entity *newParent);
+    Item *ChangeParent(Entity *newParent);
 
 public:
     ItemType itemType;
