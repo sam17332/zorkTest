@@ -161,6 +161,8 @@ void Player::UseMachine()
 	{
 		cout << "You are no longer in the present. You are on another dimension where you can't be seen and you can't interact with anything."
 			 << "\n";
+		cout << "Go explore the other rooms, maybe you find something."
+			 << "\n";
 
 		inPresent = false;
 	}

@@ -11,10 +11,10 @@ World::World()
 {
     // Create rooms
     Room *mainLab = new Room("MainLab", "You are tied to a chair, the scientists were testing somethig with you. There's a key card on the desk behind you.");
-    Room *lab = new Room("Lab", "There's a knife by the computing door.");
-    Room *computing = new Room("Computing", "ooooh look, someone forgot a key. I wonder what door will open.");
-    Room *experiments = new Room("Experiments", "There's a pickaxe? Why is there a pickaxe here? maybe you can destroy something with it?");
-    Room *secret = new Room("Secret", "There's a wierd machine in here, charge it to use it.");
+    Room *lab = new Room("Lab", "There's a knife by the computing door, maybe it's going to be useful for something.");
+    Room *computing = new Room("Computing", "ooooh look, someone forgot a key. I wonder what door will open?");
+    Room *experiments = new Room("Experiments", "There's a pickaxe? Why is there a pickaxe here?");
+    Room *secret = new Room("Secret", "There's a wierd machine in here, looks like a portal. But it not charged.");
     Room *storage = new Room("Storage", "There's a battery in here.");
     Room *street = new Room("Street", "Finally!! you are outside!");
 

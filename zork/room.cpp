@@ -31,6 +31,6 @@ void Room::Visit()
  */
 void Room::VisitStorageOtherDimension()
 {
-	cout << "It looks like a few years ago there was a hole on the wall, maybe you can open it with somethig"
+	cout << "It looks like a few years ago there was a hole on the wall, maybe you can open it with somethig."
 		 << "\n";
 }

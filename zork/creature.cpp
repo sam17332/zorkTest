@@ -21,7 +21,7 @@ void Creature::ReceiveAttack(int damage)
 	}
 	else
 	{
-		cout << "You kill him! Now open the hole to go out" << "\n";
+		cout << "You kill him! Now open the hole to get out," << "\n";
 
 		dead = true;
 	}
