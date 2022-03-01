@@ -15,7 +15,11 @@ public:
 	Creature(const char *name, const char *description, Room *room);
 	~Creature();
 
+	void ReceiveAttack(int damage);
+
 public:
+	bool dead;
+	int life;
 };
 
 #endif //_Creature
